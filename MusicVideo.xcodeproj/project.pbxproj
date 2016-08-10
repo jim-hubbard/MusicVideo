@@ -15,6 +15,8 @@
 		386456391D55521C009BE39D /* MusicVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456381D55521C009BE39D /* MusicVideoTests.swift */; };
 		386456441D55521C009BE39D /* MusicVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456431D55521C009BE39D /* MusicVideoUITests.swift */; };
 		386456561D555CFC009BE39D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456551D555CFC009BE39D /* APIManager.swift */; };
+		38DE04A11D5B8A1D00CCCE16 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DE04A01D5B8A1D00CCCE16 /* Contants.swift */; };
+		38DE04A31D5B8B6E00CCCE16 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DE04A21D5B8B6E00CCCE16 /* MusicVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		386456431D55521C009BE39D /* MusicVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideoUITests.swift; sourceTree = "<group>"; };
 		386456451D55521C009BE39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386456551D555CFC009BE39D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		38DE04A01D5B8A1D00CCCE16 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
+		38DE04A21D5B8B6E00CCCE16 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		386456221D55521C009BE39D /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				38DE049F1D5B89F300CCCE16 /* Utils */,
 				386456541D5559CA009BE39D /* Supporting Files */,
 				386456511D55598F009BE39D /* Model */,
 				386456521D5559A1009BE39D /* Controller */,
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				386456551D555CFC009BE39D /* APIManager.swift */,
+				38DE04A21D5B8B6E00CCCE16 /* MusicVideo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -158,6 +164,14 @@
 				3864562A1D55521C009BE39D /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38DE049F1D5B89F300CCCE16 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				38DE04A01D5B8A1D00CCCE16 /* Contants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +307,9 @@
 			files = (
 				386456561D555CFC009BE39D /* APIManager.swift in Sources */,
 				386456261D55521C009BE39D /* ViewController.swift in Sources */,
+				38DE04A31D5B8B6E00CCCE16 /* MusicVideo.swift in Sources */,
 				386456241D55521C009BE39D /* AppDelegate.swift in Sources */,
+				38DE04A11D5B8A1D00CCCE16 /* Contants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +536,7 @@
 				3864564A1D55521C009BE39D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3864564B1D55521C009BE39D /* Build configuration list for PBXNativeTarget "MusicVideoTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +545,7 @@
 				3864564D1D55521C009BE39D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3864564E1D55521C009BE39D /* Build configuration list for PBXNativeTarget "MusicVideoUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +554,7 @@
 				386456501D55521C009BE39D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
