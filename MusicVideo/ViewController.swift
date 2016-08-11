@@ -18,18 +18,20 @@ class ViewController: UIViewController {
         api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
     }
     
-    func didLoadData(result:String) {
+    func didLoadData(videos: [Videos]) {
         
-        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .Default) { action -> Void in
-            //do something if you want
+        for (index,item) in videos.enumerate() {
+            print("\(index) Name = \(item.vName)")
+            print("Rights = \(item.vRights)")
+            print("Price = \(item.vPrice)")
+            print("ImageURL = \(item.vImageUrl)")
+            print("Artist = \(item.vArtist)")
+            print("VideoURL = \(item.vVideoUrl)")
+            print("Imid = \(item.vImid)")
+            print("Genre = \(item.vGenre)")
+            print("LinkToiTunes = \(item.vLinkToiTunes)")
+            print("ReleaseDate = \(item.vReleaseDte)")
         }
-        
-        alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        
         
     }
     
