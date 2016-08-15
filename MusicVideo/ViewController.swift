@@ -10,8 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var videos = [Videos]()
+    
+    @IBOutlet weak var DisplayLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
+        
+        reachabilityStatusChanged()
+        
         
         //Call API
         let api = APIManager()
@@ -37,6 +46,28 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    func reachabilityStatusChanged() {
+        
+        switch reachabilityStatus {
+        case NOACCESS: view.backgroundColor = UIColor.redColor()
+            DisplayLabel.text = "No Internet"
+        case WIFI: view.backgroundColor = UIColor.greenColor()
+            DisplayLabel.text = "Reachable with WIFI"
+        case WWAN :view.backgroundColor = UIColor.yellowColor()
+            DisplayLabel.text = "Reachable with Celluar"
+        default:return
+            
+        }
+
+            
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self,name:"ReachStatisChanged",object: nil)
+    
+    }
+    
     
     
 }
