@@ -36,6 +36,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>lyricsnmusic.com</key>
+			<dict/>
+			<key>NSExceptionRequiresFowardSecrecy</key>
+			<string>true</string>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<string>true</string>
+			<key>IncludeSubdomains</key>
+			<string>true</string>
+		</dict>
+	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
