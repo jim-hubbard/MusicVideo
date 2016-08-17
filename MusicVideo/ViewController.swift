@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     var videos = [Videos]()
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var DisplayLabel: UILabel!
     
     override func viewDidLoad() {
@@ -24,26 +25,34 @@ class ViewController: UIViewController {
         
         //Call API
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
     }
     
     func didLoadData(videos: [Videos]) {
         
         print(reachabilityStatus)
         
+        //Use these if you do set this on the storyboard
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        for (index,item) in videos.enumerate() {
-            print("\(index) Name = \(item.vName)")
-            print("Rights = \(item.vRights)")
-            print("Price = \(item.vPrice)")
-            print("ImageURL = \(item.vImageUrl)")
-            print("Artist = \(item.vArtist)")
-            print("VideoURL = \(item.vVideoUrl)")
-            print("Imid = \(item.vImid)")
-            print("Genre = \(item.vGenre)")
-            print("LinkToiTunes = \(item.vLinkToiTunes)")
-            print("ReleaseDate = \(item.vReleaseDte)")
-        }
+        
+        self.videos = videos
+        
+//        for (index,item) in videos.enumerate() {
+//            print("\(index) Name = \(item.vName)")
+//            print("Rights = \(item.vRights)")
+//            print("Price = \(item.vPrice)")
+//            print("ImageURL = \(item.vImageUrl)")
+//            print("Artist = \(item.vArtist)")
+//            print("VideoURL = \(item.vVideoUrl)")
+//            print("Imid = \(item.vImid)")
+//            print("Genre = \(item.vGenre)")
+//            print("LinkToiTunes = \(item.vLinkToiTunes)")
+//            print("ReleaseDate = \(item.vReleaseDte)")
+//        }
+        
+        tableView.reloadData()
         
     }
     
@@ -69,6 +78,31 @@ class ViewController: UIViewController {
     }
     
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videos.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        let video = videos[indexPath.row]
+        
+        cell.textLabel?.text = ("\(indexPath.row + 1)" )
+        
+        cell.detailTextLabel?.text = video.vName
+        
+        return cell
+        
+    }
+    
+    
+
     
 }
 
