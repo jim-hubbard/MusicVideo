@@ -20,10 +20,7 @@ class MusicVideoTVC: UITableViewController {
         
         reachabilityStatusChanged()
         
-        
-        //Call API
-        let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+
     }
     
     func didLoadData(videos: [Videos]) {
@@ -36,20 +33,6 @@ class MusicVideoTVC: UITableViewController {
         
         
         self.videos = videos
-        
-        //        for (index,item) in videos.enumerate() {
-        //            print("\(index) Name = \(item.vName)")
-        //            print("Rights = \(item.vRights)")
-        //            print("Price = \(item.vPrice)")
-        //            print("ImageURL = \(item.vImageUrl)")
-        //            print("Artist = \(item.vArtist)")
-        //            print("VideoURL = \(item.vVideoUrl)")
-        //            print("Imid = \(item.vImid)")
-        //            print("Genre = \(item.vGenre)")
-        //            print("LinkToiTunes = \(item.vLinkToiTunes)")
-        //            print("ReleaseDate = \(item.vReleaseDte)")
-        //        }
-        
         tableView.reloadData()
         
     }
@@ -57,18 +40,65 @@ class MusicVideoTVC: UITableViewController {
     func reachabilityStatusChanged() {
         
         switch reachabilityStatus {
-        case NOACCESS: view.backgroundColor = UIColor.redColor()
+        case NOACCESS:
+            view.backgroundColor = UIColor.redColor()
+            //Move to th main thread
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                let alert = UIAlertController(title: "No Internet Access", message: "Please make sure you are connected to the Internet", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+                    action -> () in
+                    print("Cancel")
+                }
+                
+                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
+                    action -> () in
+                    print("Delete")
+                }
+                
+                let okAction = UIAlertAction(title: "OK", style: .Default) {
+                    action -> () in
+                    print("OK")
+                }
+                
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }
+            
         //DisplayLabel.text = "No Internet"
-        case WIFI: view.backgroundColor = UIColor.greenColor()
+        //case WIFI: view.backgroundColor = UIColor.greenColor()
         //DisplayLabel.text = "Reachable with WIFI"
-        case WWAN :view.backgroundColor = UIColor.yellowColor()
+        //case WWAN :view.backgroundColor = UIColor.yellowColor()
         //DisplayLabel.text = "Reachable with Celluar"
-        default:return
+        
+        default:
+            view.backgroundColor = UIColor.greenColor()
+            
+            if videos.count > 0 {
+                print("Not running API")
+            } else {
+                runAPI()
+            }
             
         }
         
         
     }
+    
+    func runAPI() {
+        
+        
+        //Call API
+        let api = APIManager()
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+    }
+    
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self,name:"ReachStatisChanged",object: nil)
