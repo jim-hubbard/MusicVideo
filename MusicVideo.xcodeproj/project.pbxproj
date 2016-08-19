@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38162AC11D661C55003F674D /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38162AC01D661C55003F674D /* MusicVideoTVC.swift */; };
+		38162AC31D6769B2003F674D /* MusicVideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38162AC21D6769B2003F674D /* MusicVideTableViewCell.swift */; };
 		386456241D55521C009BE39D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456231D55521C009BE39D /* AppDelegate.swift */; };
 		386456261D55521C009BE39D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456251D55521C009BE39D /* ViewController.swift */; };
 		386456291D55521C009BE39D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386456271D55521C009BE39D /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		38162AC01D661C55003F674D /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
+		38162AC21D6769B2003F674D /* MusicVideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideTableViewCell.swift; sourceTree = "<group>"; };
 		386456201D55521C009BE39D /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		386456231D55521C009BE39D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		386456251D55521C009BE39D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				386456251D55521C009BE39D /* ViewController.swift */,
 				38162AC01D661C55003F674D /* MusicVideoTVC.swift */,
+				38162AC21D6769B2003F674D /* MusicVideTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				386456561D555CFC009BE39D /* APIManager.swift in Sources */,
 				386456261D55521C009BE39D /* ViewController.swift in Sources */,
 				38DE04A31D5B8B6E00CCCE16 /* MusicVideo.swift in Sources */,
+				38162AC31D6769B2003F674D /* MusicVideTableViewCell.swift in Sources */,
 				386456241D55521C009BE39D /* AppDelegate.swift in Sources */,
 				38DE04A81D5CEE5D00CCCE16 /* Reachability.m in Sources */,
 				38DE04A11D5B8A1D00CCCE16 /* Contants.swift in Sources */,

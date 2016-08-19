@@ -41,7 +41,7 @@ class MusicVideoTVC: UITableViewController {
         
         switch reachabilityStatus {
         case NOACCESS:
-            view.backgroundColor = UIColor.redColor()
+            //view.backgroundColor = UIColor.redColor()
             //Move to th main thread
             dispatch_async(dispatch_get_main_queue())
             {
@@ -78,7 +78,7 @@ class MusicVideoTVC: UITableViewController {
         //DisplayLabel.text = "Reachable with Celluar"
         
         default:
-            view.backgroundColor = UIColor.greenColor()
+            //view.backgroundColor = UIColor.greenColor()
             
             if videos.count > 0 {
                 print("Not running API")
@@ -96,7 +96,7 @@ class MusicVideoTVC: UITableViewController {
         
         //Call API
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
     }
     
     
@@ -116,21 +116,19 @@ class MusicVideoTVC: UITableViewController {
         return videos.count
     }
 
+    private struct storyboard {
+        static let cellReuseIndetifier = "cell"
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        
-        let video = videos[indexPath.row]
-        
-        cell.textLabel?.text = ("\(indexPath.row + 1)" )
-        
-        cell.detailTextLabel?.text = video.vName
+        let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIndetifier, forIndexPath: indexPath) as! MusicVideTableViewCell
 
+        cell.video = videos[indexPath.row]
+        
         return cell
     }
     
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
