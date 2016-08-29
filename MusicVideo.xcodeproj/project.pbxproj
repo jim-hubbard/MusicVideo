@@ -17,6 +17,7 @@
 		386456391D55521C009BE39D /* MusicVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456381D55521C009BE39D /* MusicVideoTests.swift */; };
 		386456441D55521C009BE39D /* MusicVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456431D55521C009BE39D /* MusicVideoUITests.swift */; };
 		386456561D555CFC009BE39D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386456551D555CFC009BE39D /* APIManager.swift */; };
+		388908CA1D74A27500D38A47 /* MusicVideoDetailVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388908C91D74A27500D38A47 /* MusicVideoDetailVCViewController.swift */; };
 		38DE04A11D5B8A1D00CCCE16 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DE04A01D5B8A1D00CCCE16 /* Contants.swift */; };
 		38DE04A31D5B8B6E00CCCE16 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DE04A21D5B8B6E00CCCE16 /* MusicVideo.swift */; };
 		38DE04A81D5CEE5D00CCCE16 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DE04A71D5CEE5D00CCCE16 /* Reachability.m */; };
@@ -56,6 +57,7 @@
 		386456431D55521C009BE39D /* MusicVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideoUITests.swift; sourceTree = "<group>"; };
 		386456451D55521C009BE39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386456551D555CFC009BE39D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		388908C91D74A27500D38A47 /* MusicVideoDetailVCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoDetailVCViewController.swift; sourceTree = "<group>"; };
 		38DE04A01D5B8A1D00CCCE16 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		38DE04A21D5B8B6E00CCCE16 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		38DE04A51D5CEE5C00CCCE16 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		386456521D5559A1009BE39D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				388908C91D74A27500D38A47 /* MusicVideoDetailVCViewController.swift */,
 				386456251D55521C009BE39D /* ViewController.swift */,
 				38162AC01D661C55003F674D /* MusicVideoTVC.swift */,
 				38162AC21D6769B2003F674D /* MusicVideTableViewCell.swift */,
@@ -330,6 +333,7 @@
 				386456561D555CFC009BE39D /* APIManager.swift in Sources */,
 				386456261D55521C009BE39D /* ViewController.swift in Sources */,
 				38DE04A31D5B8B6E00CCCE16 /* MusicVideo.swift in Sources */,
+				388908CA1D74A27500D38A47 /* MusicVideoDetailVCViewController.swift in Sources */,
 				38162AC31D6769B2003F674D /* MusicVideTableViewCell.swift in Sources */,
 				386456241D55521C009BE39D /* AppDelegate.swift in Sources */,
 				38DE04A81D5CEE5D00CCCE16 /* Reachability.m in Sources */,
