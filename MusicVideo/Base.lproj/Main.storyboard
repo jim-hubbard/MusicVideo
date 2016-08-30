@@ -62,7 +62,7 @@
                                     <outlet property="musicImage" destination="OZu-C6-4YU" id="O3y-jR-Gn8"/>
                                     <outlet property="musicTitle" destination="TOs-GE-Yxc" id="wmv-wz-FEk"/>
                                     <outlet property="rank" destination="XvG-iB-LOx" id="7rM-bY-WLq"/>
-                                    <segue destination="7ZC-Lm-RJg" kind="show" id="YJT-Dv-djh"/>
+                                    <segue destination="7ZC-Lm-RJg" kind="show" identifier="musicDetail" id="YJT-Dv-djh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,12 +75,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCT-Mv-pxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682" y="602"/>
+            <point key="canvasLocation" x="1512" y="611"/>
         </scene>
-        <!--Music Video DetailVC View Controller-->
+        <!--Music Video DetailVC-->
         <scene sceneID="wxs-qg-4ej">
             <objects>
-                <viewController id="7ZC-Lm-RJg" customClass="MusicVideoDetailVCViewController" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7ZC-Lm-RJg" customClass="MusicVideoDetailVC" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sSu-o6-LRg"/>
                         <viewControllerLayoutGuide type="bottom" id="WnV-3I-gT9"/>
@@ -89,7 +89,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VKC-Jp-Osn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VKC-Jp-Osn">
                                 <rect key="frame" x="1" y="132" width="599" height="282"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZC-Zl-k7n">
@@ -106,17 +106,17 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="209" id="cdJ-zR-M07"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f0-pr-B7X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f0-pr-B7X">
                                 <rect key="frame" x="504" y="416" width="76" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="76" id="FHP-ZE-9Kz"/>
                                     <constraint firstAttribute="height" constant="34" id="eNl-w3-f7F"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -125,7 +125,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="98" id="8Qb-fi-Z85"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -150,18 +150,25 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Item" systemItem="play" id="LU6-LG-hB0">
+                        <barButtonItem systemItem="play" id="LU6-LG-hB0">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iAN-VN-86a"/>
-                        <barButtonItem title="Item" systemItem="action" id="fYv-dt-4nf">
+                        <barButtonItem systemItem="action" id="fYv-dt-4nf">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </toolbarItems>
+                    <connections>
+                        <outlet property="vGenre" destination="VgZ-9z-pqi" id="wv7-4U-tBL"/>
+                        <outlet property="vName" destination="mZC-Zl-k7n" id="jDP-mA-rYz"/>
+                        <outlet property="vPrice" destination="9f0-pr-B7X" id="oQS-dN-vXc"/>
+                        <outlet property="vRights" destination="wi5-sD-xwv" id="w7A-oj-tOM"/>
+                        <outlet property="videoImage" destination="VKC-Jp-Osn" id="CMP-g3-9cz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkx-Lv-LBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="602"/>
+            <point key="canvasLocation" x="2158" y="604"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Syu-yi-T8Z">
@@ -183,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uR-m2-wVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="602"/>
+            <point key="canvasLocation" x="833" y="611"/>
         </scene>
     </scenes>
 </document>
