@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1507" y="470"/>
         </scene>
-        <!--Table View Controller-->
+        <!--SettingsTVC-->
         <scene sceneID="P05-hZ-YVf">
             <objects>
-                <tableViewController id="woa-3m-LiD" sceneMemberID="viewController">
+                <tableViewController id="woa-3m-LiD" customClass="SettingsTVC" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Fz-ad-tG0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,6 +250,15 @@
                             <outlet property="delegate" destination="woa-3m-LiD" id="tzM-oF-Xuw"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="APICnt" destination="Jik-Gt-O3S" id="cTQ-17-9Jo"/>
+                        <outlet property="aboutDisplay" destination="9x4-yv-uhH" id="ZLT-1i-oOh"/>
+                        <outlet property="bestImageDisplay" destination="OmF-co-qld" id="hVs-da-K8x"/>
+                        <outlet property="feedBackDisplay" destination="Ja8-zO-JlT" id="vXS-Nm-Rz5"/>
+                        <outlet property="securityDisplay" destination="1aI-jz-pIi" id="kJa-q7-dVi"/>
+                        <outlet property="sliderCnt" destination="OaF-eN-0Km" id="42r-HB-pwR"/>
+                        <outlet property="touchID" destination="FD6-6i-Vql" id="OSe-D7-bFT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EL-mV-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
