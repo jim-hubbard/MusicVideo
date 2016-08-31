@@ -22,6 +22,8 @@ class MusicVideoDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         title = videos.vArtist
         vName.text = videos.vName
         vPrice.text = videos.vPrice
@@ -34,6 +36,26 @@ class MusicVideoDetailVC: UIViewController {
         else {
             videoImage.image = UIImage(named: "imageNotAvaialble")
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
+        
+        
     }
 
+    func preferredFontChanged() {
+        
+        vName.font = UIFont.preferredFontForTextStyle("headline")
+        vPrice.font = UIFont.preferredFontForTextStyle("headline")
+        vRights.font = UIFont.preferredFontForTextStyle("headline")
+        vGenre.font = UIFont.preferredFontForTextStyle("headline")
+        
+        
+    }
+    
+    deinit {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self,name:UIContentSizeCategoryDidChangeNotification,object: nil)
+        
+    }
 }
