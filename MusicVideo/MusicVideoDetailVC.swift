@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+
 
 class MusicVideoDetailVC: UIViewController {
 
@@ -18,6 +21,17 @@ class MusicVideoDetailVC: UIViewController {
     @IBOutlet weak var vPrice: UILabel!
     @IBOutlet weak var vRights: UILabel!
   
+    @IBAction func playVideo(sender: UIBarButtonItem) {
+        
+        let url = NSURL(string: videos.vVideoUrl)
+        let player = AVPlayer(URL: url!)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        self.presentViewController(playerViewController, animated: true) {
+            playerViewController.player?.play()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
