@@ -19,6 +19,7 @@ class SettingsTVC: UITableViewController {
     @IBOutlet weak var APICnt: UILabel!
     @IBOutlet weak var sliderCnt: UISlider!
     
+    @IBOutlet weak var drafTheSliderDisplay: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,11 +34,11 @@ class SettingsTVC: UITableViewController {
         if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
             
             let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
-                APICnt.text = "\(theValue)"
+                APICnt.text = "Number Of Music Videos \(theValue)"
                 sliderCnt.value = Float(theValue)
         } else {
             sliderCnt.value = 10.0
-        APICnt.text = ("\(Int(sliderCnt.value))")
+        APICnt.text = ("Number Of Music Videos \(Int(sliderCnt.value))")
         }
         
     }
@@ -60,7 +61,7 @@ class SettingsTVC: UITableViewController {
      
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(Int(sliderCnt.value), forKey: "APICNT")
-        APICnt.text = ("Number of Music Videos \(Int(sliderCnt.value))")
+        APICnt.text = ("Number Of Music Videos \(Int(sliderCnt.value))")
         
 
     }
@@ -73,6 +74,9 @@ class SettingsTVC: UITableViewController {
         securityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         bestImageDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         APICnt.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        drafTheSliderDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        
+        
         
     }
     

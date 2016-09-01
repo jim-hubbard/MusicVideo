@@ -221,7 +221,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Music Videos 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
                                                     <rect key="frame" x="8" y="8" width="584" height="75"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,12 +243,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="OaF-eN-0Km">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="OaF-eN-0Km" userLabel="Drag the slider below" colorLabel="IBBuiltInLabel-Red">
                                                     <rect key="frame" x="46" y="27" width="509" height="31"/>
                                                     <connections>
                                                         <action selector="valueChanged:" destination="woa-3m-LiD" eventType="valueChanged" id="NI7-R4-opl"/>
                                                     </connections>
                                                 </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drag the slider below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOT-PY-Mec">
+                                                    <rect key="frame" x="48" y="8" width="505" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OaF-eN-0Km" firstAttribute="centerX" secondItem="wsi-J0-AxP" secondAttribute="centerX" id="Rm0-fO-c72"/>
@@ -269,6 +275,7 @@
                         <outlet property="APICnt" destination="Jik-Gt-O3S" id="cTQ-17-9Jo"/>
                         <outlet property="aboutDisplay" destination="9x4-yv-uhH" id="ZLT-1i-oOh"/>
                         <outlet property="bestImageDisplay" destination="OmF-co-qld" id="hVs-da-K8x"/>
+                        <outlet property="drafTheSliderDisplay" destination="UOT-PY-Mec" id="esy-Gt-6CD"/>
                         <outlet property="feedBackDisplay" destination="Ja8-zO-JlT" id="vXS-Nm-Rz5"/>
                         <outlet property="securityDisplay" destination="1aI-jz-pIi" id="kJa-q7-dVi"/>
                         <outlet property="sliderCnt" destination="OaF-eN-0Km" id="42r-HB-pwR"/>
