@@ -35,6 +35,9 @@ class SettingsTVC: UITableViewController {
             let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
                 APICnt.text = "\(theValue)"
                 sliderCnt.value = Float(theValue)
+        } else {
+            sliderCnt.value = 10.0
+        APICnt.text = ("\(Int(sliderCnt.value))")
         }
         
     }
@@ -57,7 +60,8 @@ class SettingsTVC: UITableViewController {
      
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(Int(sliderCnt.value), forKey: "APICNT")
-        APICnt.text = ("\(Int(sliderCnt.value))")
+        APICnt.text = ("Number of Music Videos \(Int(sliderCnt.value))")
+        
 
     }
     

@@ -80,6 +80,12 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="J0A-uo-k4L"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="d4T-VP-T0k">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="ivo-Uv-S9t" eventType="valueChanged" id="Tbn-Ab-g94"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCT-Mv-pxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,10 +109,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x4-yv-uhH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x4-yv-uhH">
                                                     <rect key="frame" x="8" y="31" width="121" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="121" id="9Oh-sX-skT"/>
+                                                        <constraint firstAttribute="width" constant="121" id="Rpr-Oz-420"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,9 +120,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9x4-yv-uhH" firstAttribute="leading" secondItem="SSk-bw-33i" secondAttribute="leadingMargin" id="7hv-aE-ddj"/>
-                                                <constraint firstItem="9x4-yv-uhH" firstAttribute="top" secondItem="SSk-bw-33i" secondAttribute="topMargin" constant="23" id="bIQ-If-5Z4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="9x4-yv-uhH" secondAttribute="bottom" constant="31" id="lfa-DX-kvW"/>
+                                                <constraint firstItem="9x4-yv-uhH" firstAttribute="leading" secondItem="SSk-bw-33i" secondAttribute="leadingMargin" id="0Ok-b7-wrH"/>
+                                                <constraint firstItem="9x4-yv-uhH" firstAttribute="centerY" secondItem="SSk-bw-33i" secondAttribute="centerY" id="K6c-PK-rWr"/>
+                                                <constraint firstItem="9x4-yv-uhH" firstAttribute="top" secondItem="SSk-bw-33i" secondAttribute="topMargin" constant="23" id="LAv-4R-wcy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -130,10 +136,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja8-zO-JlT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja8-zO-JlT">
                                                     <rect key="frame" x="8" y="22" width="105" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="105" id="HVy-l4-fqF"/>
+                                                        <constraint firstAttribute="width" constant="105" id="WF0-7k-rZb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,9 +147,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ja8-zO-JlT" firstAttribute="leading" secondItem="HYc-of-px3" secondAttribute="leadingMargin" id="3c3-cI-c69"/>
-                                                <constraint firstItem="Ja8-zO-JlT" firstAttribute="top" secondItem="HYc-of-px3" secondAttribute="topMargin" constant="14" id="hLm-Zz-q6C"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ja8-zO-JlT" secondAttribute="bottom" constant="31" id="waW-x7-hYG"/>
+                                                <constraint firstItem="Ja8-zO-JlT" firstAttribute="top" secondItem="HYc-of-px3" secondAttribute="topMargin" constant="14" id="GzV-rX-v8v"/>
+                                                <constraint firstItem="Ja8-zO-JlT" firstAttribute="leading" secondItem="HYc-of-px3" secondAttribute="leadingMargin" id="dZm-VM-wRI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ja8-zO-JlT" secondAttribute="bottom" constant="23" id="dcw-gu-Lfs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -189,10 +195,10 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-Bh-hq3">
                                                     <rect key="frame" x="535" y="31" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Best Image Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-co-qld">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Image Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-co-qld">
                                                     <rect key="frame" x="8" y="26" width="255" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="255" id="kKS-bK-X2I"/>
+                                                        <constraint firstAttribute="width" constant="255" id="rkZ-k2-cFg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -201,10 +207,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Pyo-Bh-hq3" secondAttribute="trailing" constant="8" id="Pqn-Oc-Ofd"/>
-                                                <constraint firstItem="OmF-co-qld" firstAttribute="leading" secondItem="uwf-DM-miW" secondAttribute="leadingMargin" id="Q0Y-xy-M1Z"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OmF-co-qld" secondAttribute="bottom" constant="36" id="gdc-gZ-Ddg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OmF-co-qld" secondAttribute="bottom" constant="28" id="S4l-hX-PIc"/>
+                                                <constraint firstItem="OmF-co-qld" firstAttribute="top" secondItem="uwf-DM-miW" secondAttribute="topMargin" constant="18" id="bUL-U0-JGT"/>
+                                                <constraint firstItem="OmF-co-qld" firstAttribute="leading" secondItem="uwf-DM-miW" secondAttribute="leadingMargin" id="ewq-0t-Dgn"/>
                                                 <constraint firstItem="Pyo-Bh-hq3" firstAttribute="top" secondItem="uwf-DM-miW" secondAttribute="topMargin" constant="23" id="kXj-OC-38p"/>
-                                                <constraint firstItem="OmF-co-qld" firstAttribute="top" secondItem="uwf-DM-miW" secondAttribute="topMargin" constant="18" id="ysW-JT-SRX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -215,7 +221,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
                                                     <rect key="frame" x="8" y="8" width="584" height="75"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -223,10 +229,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="leading" secondItem="UQ9-YL-r97" secondAttribute="leadingMargin" id="Bpr-hc-Yt3"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="bottom" secondItem="UQ9-YL-r97" secondAttribute="bottomMargin" id="RnR-bI-N19"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="trailing" secondItem="UQ9-YL-r97" secondAttribute="trailingMargin" id="ger-fd-Pw4"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="top" secondItem="UQ9-YL-r97" secondAttribute="topMargin" id="uQB-fS-BNi"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jik-Gt-O3S" secondAttribute="bottom" id="KIR-X2-Cpo"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="trailing" secondItem="UQ9-YL-r97" secondAttribute="trailingMargin" id="W6f-Wa-cUE"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="top" secondItem="UQ9-YL-r97" secondAttribute="topMargin" id="ibL-ke-ukr"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="leading" secondItem="UQ9-YL-r97" secondAttribute="leadingMargin" id="ott-rn-MY5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
