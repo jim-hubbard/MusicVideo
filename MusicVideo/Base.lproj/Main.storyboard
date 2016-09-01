@@ -119,6 +119,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="9x4-yv-uhH" secondAttribute="bottom" constant="31" id="lfa-DX-kvW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uNa-EW-zCL" kind="show" id="npc-ma-QQH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ulA-Ee-SBY">
                                         <rect key="frame" x="0.0" y="148" width="600" height="84"/>
@@ -151,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-6i-Vql">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-6i-Vql">
                                                     <rect key="frame" x="535" y="26" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="touchIDSec:" destination="woa-3m-LiD" eventType="valueChanged" id="tnh-Lr-UgV"/>
@@ -183,7 +186,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-Bh-hq3">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-Bh-hq3">
                                                     <rect key="frame" x="535" y="31" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Best Image Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-co-qld">
@@ -212,7 +215,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jik-Gt-O3S">
                                                     <rect key="frame" x="8" y="8" width="584" height="75"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -234,8 +237,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OaF-eN-0Km">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="OaF-eN-0Km">
                                                     <rect key="frame" x="46" y="27" width="509" height="31"/>
+                                                    <connections>
+                                                        <action selector="valueChanged:" destination="woa-3m-LiD" eventType="valueChanged" id="NI7-R4-opl"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -266,6 +272,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EL-mV-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1507" y="1211"/>
+        </scene>
+        <!--AboutVC-->
+        <scene sceneID="Kww-e6-RUz">
+            <objects>
+                <viewController id="uNa-EW-zCL" customClass="AboutVC" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A24-Qd-h5r"/>
+                        <viewControllerLayoutGuide type="bottom" id="ilu-gb-UZg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9UY-ND-vLT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music video program created by Jim Hubbard Software Design. 2016(c)" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf0-sk-7Ye">
+                                <rect key="frame" x="20" y="64" width="479" height="216"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jim" translatesAutoresizingMaskIntoConstraints="NO" id="b4m-Ql-4CX">
+                                <rect key="frame" x="20" y="212" width="109" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="MIh-Eb-9pV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bf0-sk-7Ye" firstAttribute="leading" secondItem="9UY-ND-vLT" secondAttribute="leadingMargin" id="0Fh-bV-e2i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bf0-sk-7Ye" secondAttribute="trailing" constant="81" id="2GD-hz-wOb"/>
+                            <constraint firstItem="Bf0-sk-7Ye" firstAttribute="top" secondItem="A24-Qd-h5r" secondAttribute="bottom" id="2zS-pU-bcY"/>
+                            <constraint firstItem="ilu-gb-UZg" firstAttribute="top" secondItem="Bf0-sk-7Ye" secondAttribute="bottom" constant="276" id="JgA-sk-04Y"/>
+                            <constraint firstItem="ilu-gb-UZg" firstAttribute="top" secondItem="b4m-Ql-4CX" secondAttribute="bottom" constant="200" id="SXj-wy-QRk"/>
+                            <constraint firstItem="b4m-Ql-4CX" firstAttribute="top" secondItem="A24-Qd-h5r" secondAttribute="bottom" constant="148" id="ad9-dx-Cgx"/>
+                            <constraint firstItem="Bf0-sk-7Ye" firstAttribute="leading" secondItem="b4m-Ql-4CX" secondAttribute="leading" id="bwm-h4-DRG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelAbout" destination="Bf0-sk-7Ye" id="tes-RK-yLk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GuP-J1-Hfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2173" y="1254"/>
         </scene>
         <!--Music Video DetailVC-->
         <scene sceneID="wxs-qg-4ej">
@@ -425,4 +475,7 @@
             <point key="canvasLocation" x="833" y="611"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Jim" width="262" height="350"/>
+    </resources>
 </document>
