@@ -229,10 +229,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Jik-Gt-O3S" secondAttribute="bottom" id="KIR-X2-Cpo"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="trailing" secondItem="UQ9-YL-r97" secondAttribute="trailingMargin" id="W6f-Wa-cUE"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="top" secondItem="UQ9-YL-r97" secondAttribute="topMargin" id="ibL-ke-ukr"/>
-                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="leading" secondItem="UQ9-YL-r97" secondAttribute="leadingMargin" id="ott-rn-MY5"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="trailing" secondItem="UQ9-YL-r97" secondAttribute="trailingMargin" id="G67-CN-akN"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jik-Gt-O3S" secondAttribute="bottom" id="LAo-sm-ZKr"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="top" secondItem="UQ9-YL-r97" secondAttribute="topMargin" id="MBt-oC-JkY"/>
+                                                <constraint firstItem="Jik-Gt-O3S" firstAttribute="leading" secondItem="UQ9-YL-r97" secondAttribute="leadingMargin" id="hsj-Ed-nIy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -249,7 +249,7 @@
                                                         <action selector="valueChanged:" destination="woa-3m-LiD" eventType="valueChanged" id="NI7-R4-opl"/>
                                                     </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drag the slider below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOT-PY-Mec">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag the slider below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOT-PY-Mec">
                                                     <rect key="frame" x="48" y="8" width="505" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -258,8 +258,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OaF-eN-0Km" firstAttribute="centerX" secondItem="wsi-J0-AxP" secondAttribute="centerX" id="Rm0-fO-c72"/>
+                                                <constraint firstItem="UOT-PY-Mec" firstAttribute="trailing" secondItem="OaF-eN-0Km" secondAttribute="trailing" id="Shi-LK-uof"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UOT-PY-Mec" secondAttribute="bottom" constant="46" id="TBR-GI-Nhu"/>
                                                 <constraint firstItem="OaF-eN-0Km" firstAttribute="leading" secondItem="wsi-J0-AxP" secondAttribute="leadingMargin" constant="40" id="Uul-zv-aNX"/>
                                                 <constraint firstItem="OaF-eN-0Km" firstAttribute="top" secondItem="wsi-J0-AxP" secondAttribute="topMargin" constant="19" id="YBs-3E-Oil"/>
+                                                <constraint firstItem="UOT-PY-Mec" firstAttribute="top" secondItem="wsi-J0-AxP" secondAttribute="topMargin" id="fqg-Ax-Zyf"/>
+                                                <constraint firstItem="UOT-PY-Mec" firstAttribute="leading" secondItem="OaF-eN-0Km" secondAttribute="leading" id="s7r-S3-Vn6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -454,6 +458,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iAN-VN-86a"/>
                         <barButtonItem systemItem="action" id="fYv-dt-4nf">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="socialMedia:" destination="7ZC-Lm-RJg" id="JxB-6l-ITZ"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <connections>
