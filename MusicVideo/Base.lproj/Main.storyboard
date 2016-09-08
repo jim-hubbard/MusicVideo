@@ -167,20 +167,18 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aI-jz-pIi">
-                                                    <rect key="frame" x="8" y="31" width="101" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="101" id="X77-So-Mlp"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="8" y="31" width="481" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="centerY" secondItem="FD6-6i-Vql" secondAttribute="centerY" id="Gy9-zz-53p"/>
+                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="top" secondItem="KaC-kd-Ar8" secondAttribute="topMargin" constant="23" id="GN1-Dj-aSi"/>
+                                                <constraint firstItem="FD6-6i-Vql" firstAttribute="leading" secondItem="1aI-jz-pIi" secondAttribute="trailing" constant="46" id="Qs5-7f-Ejb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="FD6-6i-Vql" secondAttribute="trailing" constant="8" id="Rg3-ui-dBQ"/>
-                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="leading" secondItem="KaC-kd-Ar8" secondAttribute="leadingMargin" id="UgI-OD-up3"/>
-                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="top" secondItem="KaC-kd-Ar8" secondAttribute="topMargin" constant="23" id="tUz-4Z-Jvn"/>
+                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="leading" secondItem="KaC-kd-Ar8" secondAttribute="leadingMargin" id="Wyc-fM-Gh5"/>
+                                                <constraint firstItem="1aI-jz-pIi" firstAttribute="centerY" secondItem="FD6-6i-Vql" secondAttribute="centerY" id="ptG-1J-WcX"/>
                                                 <constraint firstItem="FD6-6i-Vql" firstAttribute="top" secondItem="KaC-kd-Ar8" secondAttribute="topMargin" constant="18" id="vLG-ds-8YU"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -194,6 +192,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-Bh-hq3">
                                                     <rect key="frame" x="535" y="31" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="bestImageQuality:" destination="woa-3m-LiD" eventType="valueChanged" id="dNV-HE-4HB"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Image Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-co-qld">
                                                     <rect key="frame" x="8" y="26" width="255" height="21"/>
@@ -279,6 +280,7 @@
                         <outlet property="APICnt" destination="Jik-Gt-O3S" id="cTQ-17-9Jo"/>
                         <outlet property="aboutDisplay" destination="9x4-yv-uhH" id="ZLT-1i-oOh"/>
                         <outlet property="bestImageDisplay" destination="OmF-co-qld" id="hVs-da-K8x"/>
+                        <outlet property="bestImageQuality" destination="Pyo-Bh-hq3" id="AMd-18-pyc"/>
                         <outlet property="drafTheSliderDisplay" destination="UOT-PY-Mec" id="esy-Gt-6CD"/>
                         <outlet property="feedBackDisplay" destination="Ja8-zO-JlT" id="vXS-Nm-Rz5"/>
                         <outlet property="securityDisplay" destination="1aI-jz-pIi" id="kJa-q7-dVi"/>

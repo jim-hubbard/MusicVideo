@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import LocalAuthentication
 
 
 class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
@@ -21,7 +22,10 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var APICnt: UILabel!
     @IBOutlet weak var sliderCnt: UISlider!
     
+    @IBOutlet weak var bestImageQuality: UISwitch!
     @IBOutlet weak var drafTheSliderDisplay: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +37,8 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
         touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSettings")
 
+        bestImageQuality.on = NSUserDefaults().boolForKey("BestImageSettings")
+        
         if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
             
             let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
@@ -43,8 +49,37 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         APICnt.text = ("Number Of Music Videos \(Int(sliderCnt.value))")
         }
         
+        // Check if we can access local device authentication
+        // Create the Local Authentication Context
+        let context = LAContext()
+        var touchIDError : NSError?
+        
+        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:&touchIDError) {
+            //Enable the security switch
+            touchID.enabled = true
+        } else {
+            touchID.on = false
+            touchID.enabled = false
+            securityDisplay.text = "Security Not Available on this Device"
+        }
+        
+        
+        
     }
 
+    @IBAction func bestImageQuality(sender: UISwitch) {
+       
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if bestImageQuality.on {
+            defaults.setBool(bestImageQuality.on, forKey: "BestImageSettings")
+        }
+        else{
+            defaults.setBool(false, forKey: "BestImageSettings")
+        }
+        
+    }
+    
+    
     @IBAction func touchIDSec(sender: UISwitch) {
         
       let defaults = NSUserDefaults.standardUserDefaults()

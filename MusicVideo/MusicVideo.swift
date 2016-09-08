@@ -115,10 +115,21 @@ class Videos {
         
         
         // The Video ImageURL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //Determing the size of the video to get if the user wants to check for that (from settings)
+        var sizeText = "600x600"
+        if NSUserDefaults().boolForKey("BestImageSettings") {
+            switch reachabilityStatus {
+            case WWAN:
+                sizeText = "300x300"
+            default:
+                sizeText = "600x600"
+            }
+            
+        }
+        
+        
         if let img = data["im:image"] as? JSONArray,
-            image = img[2] as? JSONDictionary,
-            immage = image["label"] as? String {
-            _vImageUrl = immage.stringByReplacingOccurrencesOfString("100x100", withString: "600x600")
+            image = img[2] as? JSONDictionary,immage = image["label"] as? String {_vImageUrl = immage.stringByReplacingOccurrencesOfString("100x100", withString: sizeText)
         }
         else
         {
