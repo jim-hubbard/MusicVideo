@@ -25,9 +25,9 @@ class MusicVideoTVC: UITableViewController {
         #if swift(>=2.2)
           
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: NSNotification.Name(rawValue: "ReachStatusChanged"), object: nil)
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(preferredFontChanged), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
             #else
             
             
@@ -47,7 +47,7 @@ class MusicVideoTVC: UITableViewController {
         )
     }
     
-    func didLoadData(videos: [Video]) {
+    func didLoadData(_ videos: [Video]) {
         
         //print(reachabilityStatus)
         
@@ -59,7 +59,7 @@ class MusicVideoTVC: UITableViewController {
         self.videos = videos
 
         
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
         
         title = ("The iTunes Top \(limit) Music Videos")
         
@@ -75,7 +75,7 @@ class MusicVideoTVC: UITableViewController {
         resultSearchController.dimsBackgroundDuringPresentation = false
         
         resultSearchController.searchBar.placeholder = "Search for Artist, Name or Rank"
-        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
+        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.prominent
         
         //add searchbar to your tableview
         tableView.tableHeaderView = resultSearchController.searchBar
@@ -92,22 +92,22 @@ class MusicVideoTVC: UITableViewController {
         case NOACCESS:
             //view.backgroundColor = UIColor.redColor()
             //Move to th main thread
-            dispatch_async(dispatch_get_main_queue())
+            DispatchQueue.main.async
             {
                 
-                let alert = UIAlertController(title: "No Internet Access", message: "Please make sure you are connected to the Internet", preferredStyle: .Alert)
+                let alert = UIAlertController(title: "No Internet Access", message: "Please make sure you are connected to the Internet", preferredStyle: .alert)
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default) {
                     action -> () in
                     print("Cancel")
                 }
                 
-                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
                     action -> () in
                     print("Delete")
                 }
                 
-                let okAction = UIAlertAction(title: "OK", style: .Default) {
+                let okAction = UIAlertAction(title: "OK", style: .default) {
                     action -> () in
                     print("OK")
                 }
@@ -116,7 +116,7 @@ class MusicVideoTVC: UITableViewController {
                 alert.addAction(cancelAction)
                 alert.addAction(deleteAction)
                 
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
                 
             }
             
@@ -142,11 +142,11 @@ class MusicVideoTVC: UITableViewController {
     
     
     
-    @IBAction func refresh(sender: UIRefreshControl) {
+    @IBAction func refresh(_ sender: UIRefreshControl) {
         
         refreshControl?.endRefreshing()
         
-        if resultSearchController.active {
+        if resultSearchController.isActive {
                     refreshControl?.attributedTitle = NSAttributedString(string: "No refresh allowed during search")
         }else {
                    runAPI()
@@ -159,16 +159,16 @@ class MusicVideoTVC: UITableViewController {
     
     func getAPICount() {
         
-        if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
+        if (UserDefaults.standard.object(forKey: "APICNT") != nil) {
             
-            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            let theValue = UserDefaults.standard.object(forKey: "APICNT") as! Int
             limit = theValue
             
         }
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "E, dd MM yyyy HH:ss"
-        let refreshDte = formatter.stringFromDate(NSDate())
+        let refreshDte = formatter.string(from: Date())
         
         refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDte)")
         
@@ -185,9 +185,9 @@ class MusicVideoTVC: UITableViewController {
     
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self,name:"ReachStatisChanged",object: nil)
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name(rawValue: "ReachStatisChanged"),object: nil)
 
-        NSNotificationCenter.defaultCenter().removeObserver(self,name:UIContentSizeCategoryDidChangeNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name.UIContentSizeCategoryDidChange,object: nil)
         
     }
     
@@ -196,35 +196,35 @@ class MusicVideoTVC: UITableViewController {
     //MARK - tableView data source
     
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
 
-        if resultSearchController.active {
+        if resultSearchController.isActive {
             return filterSearch.count
         }
         return videos.count
     
     }
 
-    private struct storyboard {
+    fileprivate struct storyboard {
         static let cellReuseIndetifier = "cell"
         static  let segueIndetifier = "musicDetail"
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIndetifier, forIndexPath: indexPath) as! MusicVideTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: storyboard.cellReuseIndetifier, for: indexPath) as! MusicVideTableViewCell
 
         
-        if resultSearchController.active {
-            cell.video = filterSearch[indexPath.row]
+        if resultSearchController.isActive {
+            cell.video = filterSearch[(indexPath as NSIndexPath).row]
         }else {
-            cell.video = videos[indexPath.row]
+            cell.video = videos[(indexPath as NSIndexPath).row]
         }
         
         return cell
@@ -275,19 +275,19 @@ class MusicVideoTVC: UITableViewController {
     }
     */
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == storyboard.segueIndetifier {
             if let indexpath = tableView.indexPathForSelectedRow {
                 let video: Video
                 
-                if resultSearchController.active {
-                    video = filterSearch[indexpath.row]
+                if resultSearchController.isActive {
+                    video = filterSearch[(indexpath as NSIndexPath).row]
                                 
                 }else {
-                    video = videos[indexpath.row]
+                    video = videos[(indexpath as NSIndexPath).row]
                 }
                 
-                let dvc = segue.destinationViewController as! MusicVideoDetailVC
+                let dvc = segue.destination as! MusicVideoDetailVC
                 dvc.videos = video
             }
         }
@@ -302,14 +302,14 @@ class MusicVideoTVC: UITableViewController {
     
     //Added the check on the searchString so that the display does blank out 
     //when you have a empty string in the search bar...
-    func filterSearch(searchText:String) {
+    func filterSearch(_ searchText:String) {
         
         if searchText == "" {
             filterSearch = videos
         }else {
             
             filterSearch = videos.filter { videos in
-                return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || "\(videos.vRank)".lowercaseString.containsString(searchText.lowercaseString)       }
+                return videos.vArtist.lowercased().contains(searchText.lowercased()) || videos.vName.lowercased().contains(searchText.lowercased()) || "\(videos.vRank)".lowercased().contains(searchText.lowercased())       }
             
         }
         tableView.reloadData()
@@ -319,9 +319,9 @@ class MusicVideoTVC: UITableViewController {
 
 extension MusicVideoTVC: UISearchResultsUpdating {
     
-        func updateSearchResultsForSearchController(searchController: UISearchController) {
-            searchController.searchBar.text!.lowercaseString
-            filterSearch(searchController.searchBar.text!)
+        func updateSearchResults(for searchController: UISearchController) {
+            //searchController.searchBar.text!.lowercased()
+            filterSearch(searchController.searchBar.text!.lowercased())
     
     }
 

@@ -13,20 +13,20 @@ class Video {
     
     
     // Data encapsulation
-    private(set) var vRank:Int
-    private(set) var vName:String
-    private(set) var vRights:String
-    private(set) var vPrice:String
-    private(set) var vImageUrl:String
-    private(set) var vArtist:String
-    private(set) var vVideoUrl:String
-    private(set) var vImid:String
-    private(set) var vGenre:String
-    private(set) var vLinkToiTunes:String
-    private(set) var vReleaseDte:String
+    fileprivate(set) var vRank:Int
+    fileprivate(set) var vName:String
+    fileprivate(set) var vRights:String
+    fileprivate(set) var vPrice:String
+    fileprivate(set) var vImageUrl:String
+    fileprivate(set) var vArtist:String
+    fileprivate(set) var vVideoUrl:String
+    fileprivate(set) var vImid:String
+    fileprivate(set) var vGenre:String
+    fileprivate(set) var vLinkToiTunes:String
+    fileprivate(set) var vReleaseDte:String
     
     // This variable gets created from the UI
-    var vImageData:NSData?
+    var vImageData:Data?
     
     
     

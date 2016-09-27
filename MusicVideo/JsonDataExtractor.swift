@@ -10,15 +10,15 @@ import Foundation
 
 class JsonDataExtractor {
     
-    static func extractVideoDataFromJson(videoDataObject:AnyObject) -> [Video] {
+    static func extractVideoDataFromJson(_ videoDataObject:AnyObject) -> [Video] {
         
         guard let videoData = videoDataObject as? JSONDictionary else { return [Video]() }
         
         var videos = [Video]()
         
-        if let feeds = videoData["feed"] as? JSONDictionary, entries = feeds["entry"] as? JSONArray {
+        if let feeds = videoData["feed"] as? JSONDictionary, let entries = feeds["entry"] as? JSONArray {
             
-            for (index, data) in entries.enumerate() {
+            for (index, data) in entries.enumerated() {
                 
                 
                 var vName = " ", vRights = "", vPrice = "", vImageUrl = "",
@@ -28,20 +28,20 @@ class JsonDataExtractor {
                 
                 // Video name
                 if let imName = data["im:name"] as? JSONDictionary,
-                    label = imName["label"] as? String {
+                    let label = imName["label"] as? String {
                     vName = label
                 }
                 
                 // Video Rights~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let rightsDict = data["rights"] as? JSONDictionary,
-                    label = rightsDict["label"] as? String {
+                    let label = rightsDict["label"] as? String {
                     vRights = label
                 }
                 
                 // Price of Video
                 
                 if let imPrice = data["im:price"] as? JSONDictionary,
-                    label = imPrice["label"] as? String {
+                    let label = imPrice["label"] as? String {
                     vPrice = label
                 }
                 
@@ -49,7 +49,7 @@ class JsonDataExtractor {
                 // The Video ImageURL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 //Determing the size of the video to get if the user wants to check for that (from settings)
                 var sizeText = "600x600"
-                if NSUserDefaults().boolForKey("BestImageSettings") {
+                if UserDefaults().bool(forKey: "BestImageSettings") {
                     switch reachabilityStatus {
                     case WWAN:
                         sizeText = "300x300"
@@ -61,14 +61,14 @@ class JsonDataExtractor {
                 
                 
                 if let img = data["im:image"] as? JSONArray,
-                    image = img[2] as? JSONDictionary,immage = image["label"] as? String {vImageUrl = immage.stringByReplacingOccurrencesOfString("100x100", withString: sizeText)
+                    let image = img[2] as? JSONDictionary,let immage = image["label"] as? String {vImageUrl = immage.replacingOccurrences(of: "100x100", with: sizeText)
                 }
                 
                 
                 // Video Artist~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let id = data["id"] as? JSONDictionary,
-                    attributes = id["attributes"] as? JSONDictionary,
-                    Imid = attributes["im:id"] as? String {
+                    let attributes = id["attributes"] as? JSONDictionary,
+                    let Imid = attributes["im:id"] as? String {
                     vImid = Imid
                 }
                 
@@ -76,9 +76,9 @@ class JsonDataExtractor {
                 
                 //Video Url~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let link = data["link"] as? JSONArray,
-                    vUrl = link[1] as? JSONDictionary,
-                    attributes = vUrl["attributes"] as? JSONDictionary,
-                    href = attributes["href"] as? String {
+                    let vUrl = link[1] as? JSONDictionary,
+                    let attributes = vUrl["attributes"] as? JSONDictionary,
+                    let href = attributes["href"] as? String {
                     vVideoUrl = href
                 }
                 
@@ -86,8 +86,8 @@ class JsonDataExtractor {
                 
                 //Video Imid~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let id = data["id"] as? JSONDictionary,
-                    attributes = id["attributes"] as? JSONDictionary,
-                    Imid = attributes["im:id"] as? String {
+                    let attributes = id["attributes"] as? JSONDictionary,
+                    let Imid = attributes["im:id"] as? String {
                     vImid = Imid
                 }
                 
@@ -95,8 +95,8 @@ class JsonDataExtractor {
                 
                 //Video Genre~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let category = data["category"] as? JSONDictionary,
-                    attributes = category["attributes"] as? JSONDictionary,
-                    term = attributes["term"] as? String {
+                    let attributes = category["attributes"] as? JSONDictionary,
+                    let term = attributes["term"] as? String {
                     vGenre = term
                 }
                 
@@ -104,15 +104,15 @@ class JsonDataExtractor {
                 
                 // Video LinkToiTunes~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let id = data["id"] as? JSONDictionary,
-                    label = id["label"] as? String {
+                    let label = id["label"] as? String {
                     vLinkToiTunes = label
                 }
                 
                 
                 //Video ReleaseDte~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 if let imReleaseDate = data["im:releaseDate"] as? JSONDictionary,
-                    attributes = imReleaseDate["attributes"] as? JSONDictionary,
-                    label = attributes["label"] as? String {
+                    let attributes = imReleaseDate["attributes"] as? JSONDictionary,
+                    let label = attributes["label"] as? String {
                     vReleaseDte = label
                 }
                 

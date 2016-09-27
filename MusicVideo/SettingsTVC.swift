@@ -29,19 +29,19 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(preferredFontChanged), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
         
         tableView.alwaysBounceVertical = false
         
         title = "Settings"
     
-        touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSettings")
+        touchID.isOn = UserDefaults.standard.bool(forKey: "SecSettings")
 
-        bestImageQuality.on = NSUserDefaults().boolForKey("BestImageSettings")
+        bestImageQuality.isOn = UserDefaults().bool(forKey: "BestImageSettings")
         
-        if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
+        if (UserDefaults.standard.object(forKey: "APICNT") != nil) {
             
-            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            let theValue = UserDefaults.standard.object(forKey: "APICNT") as! Int
                 APICnt.text = "Number Of Music Videos \(theValue)"
                 sliderCnt.value = Float(theValue)
         } else {
@@ -54,12 +54,12 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         let context = LAContext()
         var touchIDError : NSError?
         
-        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:&touchIDError) {
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error:&touchIDError) {
             //Enable the security switch
-            touchID.enabled = true
+            touchID.isEnabled = true
         } else {
-            touchID.on = false
-            touchID.enabled = false
+            touchID.isOn = false
+            touchID.isEnabled = false
             securityDisplay.text = "Security Not Available on this Device"
         }
         
@@ -67,37 +67,37 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
     }
 
-    @IBAction func bestImageQuality(sender: UISwitch) {
+    @IBAction func bestImageQuality(_ sender: UISwitch) {
        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if bestImageQuality.on {
-            defaults.setBool(bestImageQuality.on, forKey: "BestImageSettings")
+        let defaults = UserDefaults.standard
+        if bestImageQuality.isOn {
+            defaults.set(bestImageQuality.isOn, forKey: "BestImageSettings")
         }
         else{
-            defaults.setBool(false, forKey: "BestImageSettings")
+            defaults.set(false, forKey: "BestImageSettings")
         }
         
     }
     
     
-    @IBAction func touchIDSec(sender: UISwitch) {
+    @IBAction func touchIDSec(_ sender: UISwitch) {
         
-      let defaults = NSUserDefaults.standardUserDefaults()
-        if touchID.on {
-            defaults.setBool(touchID.on, forKey: "SecSettings")
+      let defaults = UserDefaults.standard
+        if touchID.isOn {
+            defaults.set(touchID.isOn, forKey: "SecSettings")
         }
         else{
-            defaults.setBool(false, forKey: "SecSettings")
+            defaults.set(false, forKey: "SecSettings")
         }
         
     }
     
     
     
-    @IBAction func valueChanged(sender: AnyObject) {
+    @IBAction func valueChanged(_ sender: AnyObject) {
      
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(Int(sliderCnt.value), forKey: "APICNT")
+        let defaults = UserDefaults.standard
+        defaults.set(Int(sliderCnt.value), forKey: "APICNT")
         APICnt.text = ("Number Of Music Videos \(Int(sliderCnt.value))")
         
 
@@ -106,26 +106,26 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
     func preferredFontChanged() {
         
-        aboutDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        feedBackDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        securityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        bestImageDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        APICnt.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        drafTheSliderDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        aboutDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        feedBackDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        securityDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        bestImageDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        APICnt.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        drafTheSliderDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
         
         
         
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        if indexPath.section == 0 && indexPath.row == 1 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 1 {
             
             let mailComposeViewController = configureMail()
             
             if MFMailComposeViewController.canSendMail() {
-                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+                self.present(mailComposeViewController, animated: true, completion: nil)
                 
                 }
                 else {
@@ -149,40 +149,40 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
         func mailAlert() {
             
-            let alertController: UIAlertController = UIAlertController(title: "Alert", message: "No mail accounts setup on this device", preferredStyle: .Alert)
+            let alertController: UIAlertController = UIAlertController(title: "Alert", message: "No mail accounts setup on this device", preferredStyle: .alert)
          
-            let okAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+            let okAction = UIAlertAction(title: "OK", style: .default) { action -> Void in
             
                 //Do something?
             }
             
             alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: false, completion: nil)
+            self.present(alertController, animated: false, completion: nil)
             
         }
 
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             print("Mail cancelled")
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.saved.rawValue:
             print("Mail saved")
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.sent.rawValue:
             print("Mail sent")
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.failed.rawValue:
             print("Mail Failed")
         default:
             print("Unknown Issue")
         }
-        self.dismissViewControllerAnimated(true, completion: nil)}
+        self.dismiss(animated: true, completion: nil)}
     
     
             
     deinit {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self,name:UIContentSizeCategoryDidChangeNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name.UIContentSizeCategoryDidChange,object: nil)
         
     }
 

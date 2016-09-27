@@ -15,7 +15,7 @@ class AboutVC: UIViewController {
         super.viewDidLoad()
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(preferredFontChanged), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
         
         title = "About"
         
@@ -26,13 +26,13 @@ class AboutVC: UIViewController {
 
     func preferredFontChanged() {
         
-        labelAbout.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        labelAbout.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
     }
     
     
     deinit {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self,name:UIContentSizeCategoryDidChangeNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name.UIContentSizeCategoryDidChange,object: nil)
         
     }
     

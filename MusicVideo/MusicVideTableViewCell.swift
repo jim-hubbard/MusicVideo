@@ -29,8 +29,8 @@ class MusicVideTableViewCell: UITableViewCell {
 
     func updateCell() {
         
-        musicTitle.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        rank.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        musicTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        rank.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
 
         musicTitle.text = video?.vName
         rank.text = ("\(video!.vRank)")
@@ -38,7 +38,7 @@ class MusicVideTableViewCell: UITableViewCell {
         
         if video?.vImageData != nil {
             print("Get data from array ...")
-            musicImage.image = UIImage(data: video!.vImageData!)
+            musicImage.image = UIImage(data: video!.vImageData! as Data)
         } else {
             getVideoImage(video!, imageView: musicImage)
             print ("get images in background thread")
@@ -76,11 +76,13 @@ class MusicVideTableViewCell: UITableViewCell {
  * background status as per setpriority(2) (i.e. disk I/O is throttled and the
  * thread's scheduling priority is set to lowest value).
  */
-    func getVideoImage(video: Video, imageView: UIImageView) {
+    func getVideoImage(_ video: Video, imageView: UIImageView) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        
+        DispatchQueue.global(qos: .default).sync {
+        //DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             
-            let data = NSData(contentsOfURL: NSURL(string:video.vImageUrl)!)
+            let data = try? Data(contentsOf: URL(string:video.vImageUrl)!)
             
             var image : UIImage?
             if data != nil {
@@ -89,7 +91,7 @@ class MusicVideTableViewCell: UITableViewCell {
             }
             
             //move back to the Main Queue
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 imageView.image = image
             }
             
