@@ -10,9 +10,9 @@ import UIKit
 
 class MusicVideoTVC: UITableViewController {
 
-    var videos = [Videos]()
+    var videos = [Video]()
     
-    var filterSearch = [Videos]()
+    var filterSearch = [Video]()
     
     let resultSearchController = UISearchController(searchResultsController: nil)
     
@@ -21,11 +21,21 @@ class MusicVideoTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
-
+       
+        #if swift(>=2.2)
+          
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChanged), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+            #else
+            
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachablityStatusChanged"), name: "ReachStatusChanged", object: nil)
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector:("preferredFontChanged"), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+            
+        #endif
         
         reachabilityStatusChanged()
         
@@ -37,9 +47,9 @@ class MusicVideoTVC: UITableViewController {
         )
     }
     
-    func didLoadData(videos: [Videos]) {
+    func didLoadData(videos: [Video]) {
         
-        print(reachabilityStatus)
+        //print(reachabilityStatus)
         
         //Use these if you do set this on the storyboard
         //tableView.dataSource = self
@@ -47,6 +57,7 @@ class MusicVideoTVC: UITableViewController {
         
         
         self.videos = videos
+
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
         
@@ -58,8 +69,11 @@ class MusicVideoTVC: UITableViewController {
         resultSearchController.searchResultsUpdater = self
         
         definesPresentationContext = true
+       
+        //resultSearchController.obscuresBackgroundDuringPresentation = true
         
         resultSearchController.dimsBackgroundDuringPresentation = false
+        
         resultSearchController.searchBar.placeholder = "Search for Artist, Name or Rank"
         resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
         
@@ -264,7 +278,7 @@ class MusicVideoTVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == storyboard.segueIndetifier {
             if let indexpath = tableView.indexPathForSelectedRow {
-                let video: Videos
+                let video: Video
                 
                 if resultSearchController.active {
                     video = filterSearch[indexpath.row]
@@ -284,11 +298,20 @@ class MusicVideoTVC: UITableViewController {
 //        filterSearch(searchController.searchBar.text!)
 //        
 //    }
+
     
+    //Added the check on the searchString so that the display does blank out 
+    //when you have a empty string in the search bar...
     func filterSearch(searchText:String) {
-        filterSearch = videos.filter { videos in
-            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || "\(videos.vRank)".lowercaseString.containsString(searchText.lowercaseString)       }
         
+        if searchText == "" {
+            filterSearch = videos
+        }else {
+            
+            filterSearch = videos.filter { videos in
+                return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || "\(videos.vRank)".lowercaseString.containsString(searchText.lowercaseString)       }
+            
+        }
         tableView.reloadData()
     }
     

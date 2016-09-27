@@ -10,7 +10,7 @@ import UIKit
 
 class MusicVideTableViewCell: UITableViewCell {
     
-    var video: Videos? {
+    var video: Video? {
         didSet {
             updateCell()
         }
@@ -76,7 +76,7 @@ class MusicVideTableViewCell: UITableViewCell {
  * background status as per setpriority(2) (i.e. disk I/O is throttled and the
  * thread's scheduling priority is set to lowest value).
  */
-    func getVideoImage(video: Videos, imageView: UIImageView) {
+    func getVideoImage(video: Video, imageView: UIImageView) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
